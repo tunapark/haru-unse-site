@@ -1,4 +1,4 @@
-window.getUnse = async function () {
+async function getUnse() {
   const resultDiv = document.getElementById("result");
   resultDiv.innerText = "운세를 불러오는 중...";
   try {
@@ -9,4 +9,4 @@ window.getUnse = async function () {
   } catch (e) {
     resultDiv.innerText = "GPT API 호출에 오류가 발생했습니다. 다시 시도해주세요.";
   }
-};
+}
