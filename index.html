@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>하루운세</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #1c1c2d, #2e2e48);
+      color: #f0f0f0;
+      font-family: 'Noto Sans KR', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 1rem;
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    p.subtitle {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
+    button {
+      background: #8b5cf6;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #7c3aed;
+    }
+    .card {
+      background: #2a2a40;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      margin-top: 2rem;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    .footer {
+      margin-top: auto;
+      font-size: 0.85rem;
+      color: #888;
+      padding-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔮 하루운세</h1>
+  <p class="subtitle">오늘은 어떤 날일까요?</p>
+  <button onclick="getUnse()">오늘의 운세 보기</button>
+  <div id="result" class="card" style="display:none;"></div>
+  <p class="footer">powered by OpenAI GPT</p>
+
+  <script>
+    async function getUnse() {
+      const resultDiv = document.getElementById('result');
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = '<em>운세 조정 중...✨</em>';
+
+      try {
+        const response = await fetch('https://geniepark.workers.dev');
+        const data = await response.json();
+        resultDiv.innerText = data.message;
+      } catch (error) {
+        resultDiv.innerText = 'GPT API 호출에 오류가 발생했습니다. 다시 시도해주세요.';
+      }
+    }
+  </script>
+</body>
+</html>
