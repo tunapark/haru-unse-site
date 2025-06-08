@@ -70,7 +70,7 @@
       resultDiv.innerHTML = '<em>운세 조정 중...✨</em>';
 
       try {
-        const response = await fetch('https://haru-unse-worker.geniepark.workers.dev');
+        const response = await fetch('https://genieparkunse.vercel.app/api/unse');
         const data = await response.json();
         resultDiv.innerText = data.message;
       } catch (error) {
