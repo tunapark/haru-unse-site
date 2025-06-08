@@ -4,7 +4,7 @@ async function fetchUnse() {
   resultDiv.innerText = "불러오는 중...";
 
   try {
-    const response = await fetch("https://genieparkunse.vercel.app/api/unse");
+    const response = await fetch("https://geniepark-5g4wx9cr8-tunas-projects-45fdaad5.vercel.app/api/unse");
     const data = await response.json();
     resultDiv.innerText = data.message;
   } catch (error) {
